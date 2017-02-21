@@ -1,7 +1,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿using Chessington.GameEngine.Pieces;
+=======
+﻿using System.Collections.Generic;
+using Chessington.GameEngine.Pieces;
+>>>>>>> 9fdf317... Added Unit Tests for Knight movement
 =======
 ﻿using System.Collections.Generic;
 using Chessington.GameEngine.Pieces;
@@ -23,6 +28,7 @@ namespace Chessington.GameEngine.Tests.Pieces
     public class KnightTests
     {
         [Test]
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -74,6 +80,8 @@ namespace Chessington.GameEngine.Tests.Pieces
 >>>>>>> 9fdf317... Added Unit Tests for Knight movement
 =======
 >>>>>>> 9fdf317... Added Unit Tests for Knight movement
+=======
+>>>>>>> 9fdf317... Added Unit Tests for Knight movement
         public void Knights_CanPerformKnightsMoves()
         {
             var board = new Board();
@@ -114,6 +122,9 @@ namespace Chessington.GameEngine.Tests.Pieces
             moves.Should().Contain(Square.At(2, 5));
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 9fdf317... Added Unit Tests for Knight movement
+=======
 >>>>>>> 9fdf317... Added Unit Tests for Knight movement
 =======
 >>>>>>> 9fdf317... Added Unit Tests for Knight movement
