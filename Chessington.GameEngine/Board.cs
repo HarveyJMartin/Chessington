@@ -5,6 +5,12 @@ using Chessington.GameEngine.Pieces;
 
 namespace Chessington.GameEngine
 {
+    public enum Direction
+    {
+        NW, N, NE,
+        W,     E,
+        SW, S, SE
+    }
     public class Board
     {
         private readonly Piece[,] board;
@@ -71,6 +77,16 @@ namespace Chessington.GameEngine
         public bool IsBlocked(Square square)
         {
             return GetPiece(square) != null;
+        }
+
+        public bool IsEnemy(Square square, Player player)
+        {
+            if (GetPiece(square) != null)
+            {
+                return GetPiece(square).Player != player;
+            };
+
+            return false;
         }
 
         public bool OnBoard(Square square)

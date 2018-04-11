@@ -60,8 +60,7 @@ namespace Chessington.GameEngine.Pieces
 
             if (board.OnBoard(posSquare))
             {
-
-                if (board.IsBlocked(posSquare))
+                if (board.IsEnemy(posSquare, Player))
                 {
                     squares.Add(posSquare);
                 }
@@ -71,8 +70,7 @@ namespace Chessington.GameEngine.Pieces
 
             if (board.OnBoard(posSquare))
             {
-
-                if (board.IsBlocked(posSquare))
+                if (board.IsEnemy(posSquare, Player))
                 {
                     squares.Add(posSquare);
                 }
