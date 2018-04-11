@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Chessington.GameEngine.Pieces;
 using FluentAssertions;
 using NUnit.Framework;
@@ -28,6 +29,7 @@ namespace Chessington.GameEngine.Tests.Pieces
             expectedMoves.RemoveAll(s => s == Square.At(4, 4));
 
             moves.Should().Contain(expectedMoves);
+            
         }
     }
 }
