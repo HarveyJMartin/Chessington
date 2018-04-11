@@ -5,119 +5,80 @@ namespace Chessington.GameEngine.Pieces
 {
     public class Pawn : Piece
     {
+        public bool HasMoved = false;
+
         public Pawn(Player player)
-            : base(player) { }
+            : base(player)
+        {
+
+        }
+
+        public override void MoveTo(Board board, Square square)
+        {
+            base.MoveTo(board, square);
+            HasMoved = true;
+        }
 
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
             var currentSquare = board.FindPiece(this);
 
-            if (this.Player == Player.White)
+            var UpDown = this.Player == Player.White ? -1 : 1;
+
+            // normal move case
+            var squares = new List<Square>();
+
+            var posSquare = new Square(currentSquare.Row + UpDown, currentSquare.Col);
+
+            if (board.OnBoard(posSquare))
             {
-                // normal move case
-                var squares = new List<Square>();
-
-                var posSquare = new Square(currentSquare.Row - 1, currentSquare.Col);
-
-                if (posSquare.Row > -1 || posSquare.Col > -1 || posSquare.Row < 7 || posSquare.Col < 7)
+                if (!board.IsBlocked(posSquare))
                 {
-                    if (board.GetPiece(posSquare) == null)
-                    {
-                        squares.Add(posSquare);
-                    }
+                    squares.Add(posSquare);
                 }
-
-                // first move case
-                if (currentSquare.Row == 6)
-                {
-
-                    posSquare = new Square(currentSquare.Row - 2, currentSquare.Col);
-
-                    if (board.GetPiece(posSquare) == null)
-                    {
-                        squares.Add(posSquare);
-                    }
-                }
-
-                // taking case
-
-                posSquare = new Square(currentSquare.Row - 1, currentSquare.Col + 1);
-
-                if (posSquare.Row > -1 || posSquare.Col > -1 || posSquare.Row < 7 || posSquare.Col < 7)
-                {
-
-                    if (board.GetPiece(posSquare) != null)
-                    {
-                        squares.Add(posSquare);
-                    }
-                }
-
-                posSquare = new Square(currentSquare.Row - 1, currentSquare.Col - 1);
-
-                if (posSquare.Row > -1 || posSquare.Col > -1 || posSquare.Row < 7 || posSquare.Col < 7)
-                {
-
-                    if (board.GetPiece(posSquare) != null)
-                    {
-                        squares.Add(posSquare);
-                    }
-                }
-
-                return squares;
             }
-            else
+
+            // first move case
+            if (HasMoved == false)
             {
-                // normal move case
-                var squares = new List<Square>();
+                posSquare = new Square(currentSquare.Row + UpDown * 2, currentSquare.Col);
 
-                var posSquare = new Square(currentSquare.Row + 1, currentSquare.Col);
-
-                if (posSquare.Row > -1 || posSquare.Col > -1 || posSquare.Row < 7 || posSquare.Col < 7)
+                if (!board.IsBlocked(posSquare))
                 {
-                    if (board.GetPiece(posSquare) == null)
+                    var inTheWay = new Square(currentSquare.Row + UpDown, currentSquare.Col);
+
+                    if (!board.IsBlocked(inTheWay))
                     {
                         squares.Add(posSquare);
                     }
                 }
-
-                // first move case
-                if (currentSquare.Row == 1)
-                {
-
-                    posSquare = new Square(currentSquare.Row + 2, currentSquare.Col);
-
-                    if (board.GetPiece(posSquare) == null)
-                    {
-                        squares.Add(posSquare);
-                    }
-                }
-
-                // taking case
-
-                posSquare = new Square(currentSquare.Row + 1, currentSquare.Col + 1);
-
-                if (posSquare.Row > -1 || posSquare.Col > -1 || posSquare.Row < 7 || posSquare.Col < 7)
-                {
-
-                    if (board.GetPiece(posSquare) != null)
-                    {
-                        squares.Add(posSquare);
-                    }
-                }
-
-                posSquare = new Square(currentSquare.Row + 1, currentSquare.Col - 1);
-
-                if (posSquare.Row > -1 || posSquare.Col > -1 || posSquare.Row < 7 || posSquare.Col < 7)
-                {
-
-                    if (board.GetPiece(posSquare) != null)
-                    {
-                        squares.Add(posSquare);
-                    }
-                }
-
-                return squares;
             }
+
+            // taking case
+
+            posSquare = new Square(currentSquare.Row + UpDown, currentSquare.Col + 1);
+
+            if (board.OnBoard(posSquare))
+            {
+
+                if (board.IsBlocked(posSquare))
+                {
+                    squares.Add(posSquare);
+                }
+            }
+
+            posSquare = new Square(currentSquare.Row + UpDown, currentSquare.Col - 1);
+
+            if (board.OnBoard(posSquare))
+            {
+
+                if (board.IsBlocked(posSquare))
+                {
+                    squares.Add(posSquare);
+                }
+            }
+
+            return squares;
         }
     }
 }

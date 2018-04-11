@@ -63,8 +63,21 @@ namespace Chessington.GameEngine
 
             CurrentPlayer = movingPiece.Player == Player.White ? Player.Black : Player.White;
             OnCurrentPlayerChanged(CurrentPlayer);
+
+            
+
         }
-        
+
+        public bool IsBlocked(Square square)
+        {
+            return GetPiece(square) != null;
+        }
+
+        public bool OnBoard(Square square)
+        {
+            return (square.Row > -1 && square.Col > -1 && square.Row < 8 && square.Col < 8);
+        }
+
         public delegate void PieceCapturedEventHandler(Piece piece);
         
         public event PieceCapturedEventHandler PieceCaptured;
