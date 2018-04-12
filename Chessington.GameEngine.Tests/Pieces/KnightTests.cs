@@ -1,29 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿using Chessington.GameEngine.Pieces;
-=======
 ﻿using System.Collections.Generic;
 using Chessington.GameEngine.Pieces;
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
-﻿using System.Collections.Generic;
-using Chessington.GameEngine.Pieces;
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
-﻿using System.Collections.Generic;
-using Chessington.GameEngine.Pieces;
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
-﻿using System.Collections.Generic;
-using Chessington.GameEngine.Pieces;
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
-﻿using System.Collections.Generic;
-using Chessington.GameEngine.Pieces;
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -33,11 +9,6 @@ namespace Chessington.GameEngine.Tests.Pieces
     public class KnightTests
     {
         [Test]
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         public void WhiteKnights_LongUpRight()
         {
             var board = new Board();
@@ -71,6 +42,7 @@ namespace Chessington.GameEngine.Tests.Pieces
 
             moves.Should().Contain(Square.At(6, 3));
         }
+
         [Test]
         public void BlackKnights_WideUpRight()
         {
@@ -81,15 +53,10 @@ namespace Chessington.GameEngine.Tests.Pieces
             var moves = knight.GetAvailableMoves(board);
 
             moves.Should().Contain(Square.At(4, 7));
-=======
-=======
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
+        }
+
+        [Test]
+
         public void Knights_CanPerformKnightsMoves()
         {
             var board = new Board();
@@ -128,19 +95,6 @@ namespace Chessington.GameEngine.Tests.Pieces
             var moves = knight.GetAvailableMoves(board);
 
             moves.Should().Contain(Square.At(2, 5));
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
-=======
->>>>>>> 9fdf317... Added Unit Tests for Knight movement
         }
     }
 }
