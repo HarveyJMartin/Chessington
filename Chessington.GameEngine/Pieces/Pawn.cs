@@ -42,14 +42,16 @@ namespace Chessington.GameEngine.Pieces
             if (HasMoved == false)
             {
                 posSquare = new Square(currentSquare.Row + UpDown * 2, currentSquare.Col);
-
-                if (!board.IsBlocked(posSquare))
+                if (board.OnBoard((posSquare)))
                 {
-                    var inTheWay = new Square(currentSquare.Row + UpDown, currentSquare.Col);
-
-                    if (!board.IsBlocked(inTheWay))
+                    if (!board.IsBlocked(posSquare))
                     {
-                        squares.Add(posSquare);
+                        var inTheWay = new Square(currentSquare.Row + UpDown, currentSquare.Col);
+
+                        if (!board.IsBlocked(inTheWay))
+                        {
+                            squares.Add(posSquare);
+                        }
                     }
                 }
             }
